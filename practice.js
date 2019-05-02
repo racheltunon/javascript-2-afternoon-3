@@ -26,6 +26,9 @@
   Write a function called first that takes in two parameters, an array and a callback function.
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
+function first(arr, cb){
+  cb(arr[0])
+}
 
 // Code Here 
 
@@ -48,7 +51,9 @@ first(names, function(firstName){
 */
 
 //Code Here
-
+function last(arr, cb){
+  cb(arr[1])
+}
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -64,7 +69,9 @@ last(names, function(lastName){
   Write a function called multiply that takes in three parameters: two numbers and a callback function.  
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
-
+function multiply(num1, num2, cb){
+  cb(num1 * num2)
+}
 //Code Here
 
 // Do not edit the code below.
@@ -83,7 +90,13 @@ multiply(4, 3, function(answer){
   If it does, invoke the callback with true as the argument. 
   If the name does not exist, invoke the callback with false as the argument.
 */
-
+function contains(arr, str, cb){
+  if(arr.includes(str)){
+    cb (true)
+  } else{
+    cb (false) 
+  }
+}
 //Code Here 
 
 // Do not edit the code below.
@@ -106,7 +119,16 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
-
+function uniq(names, cb){
+ for (var i = 0; i < names.length; i++){
+   for (var j = i + 1; j < names.length; j++){
+     if (names[i]=== names[j]){
+       names.splice(j,1)
+     }
+   }
+ }
+ cb(names) 
+}
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -123,7 +145,12 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
-
+function each(names, cb){
+  for (var i = 0; i < names.length; i++){
+    cb(names[i], i)
+  }
+  return names;
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -140,7 +167,14 @@ each(names, function(item, indice){
 */
 
 // Code here
+function getUserById(users, id, cb){
+  for (let i = 0; i < users.length; i++){
+    if (users[i].id === id){
+      return cb(users[i]);
+    }
+  }
 
+}
 // Do not edit the code below.
 var users = [
   {
